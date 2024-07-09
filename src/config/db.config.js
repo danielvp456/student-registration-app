@@ -1,9 +1,6 @@
-import { createPool } from "mysql2/promise"
+import { Sequelize } from 'sequelize';
 
-export const pool = createPool({
+export const sequelize = new Sequelize('spainuniversitydb', 'root', 'admin', {
     host: 'localhost',
-    user: 'root',
-    password: 'admin',
-    port: 3306,
-    database: 'spainuniversitydb'
+    dialect: 'mysql',
 });
