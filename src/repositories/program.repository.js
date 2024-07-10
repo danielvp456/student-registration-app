@@ -9,8 +9,8 @@ class ProgramRepository {
         return await ProgramModel.findByPk(id);
     }
 
-    async create(student) {
-        return await ProgramModel.create(student);
+    async create(program) {
+        return await ProgramModel.create(program);
     }
 
     async update(id, programData) {
