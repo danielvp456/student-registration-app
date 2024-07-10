@@ -14,11 +14,7 @@ const Subject = sequelize.define('Subject', {
     credits: {
         type: DataTypes.INTEGER,
         allowNull: false,
-    },
-    cost: {
-        type: DataTypes.FLOAT,
-        allowNull: false,
-    },
+    }
 }, {
     tableName: 'Subject',
     timestamps: false,

@@ -9,6 +9,14 @@ class ProfessorRepository {
         return await EnrollmentModel.findByPk(id);
     }
 
+    async getByStudentId(id){
+        return await EnrollmentModel.count({where: {student_id: id}});
+    }
+
+    async getByProfessorAndStudent(student_id, professor_id){
+        return await EnrollmentModel.findOne({where: {student_id, professor_id}});
+    }
+
     async create(enrollment) {
         return await EnrollmentModel.create(enrollment);
     }

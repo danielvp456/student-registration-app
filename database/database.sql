@@ -8,7 +8,7 @@ CREATE TABLE Student(
     email VARCHAR(255),
     address VARCHAR(255),
     country VARCHAR(100),
-    PRIMARY KEY(id),
+    PRIMARY KEY(id)
 );
 
 INSERT INTO Student (name, email, address, country) VALUES 
@@ -21,40 +21,46 @@ CREATE TABLE Program (
     PRIMARY KEY (id)
 );
 
-INSERT INTO Program (name, total_credits) VALUES ('FullStack Developer', 0);
+INSERT INTO Program (name, total_credits) VALUES ('FullStack Developer', 9);
 
 CREATE TABLE Subject (
     id INT(11) NOT NULL AUTO_INCREMENT,
     name VARCHAR(100) NOT NULL,
     credits INT(11) NOT NULL,
-    cost FLOAT NOT NULL,
     PRIMARY KEY (id)
 );
 
-INSERT INTO Subject (name, credits, cost) VALUES 
-('Mathematics', 3, 150.0),
-('Physics', 3, 150.0),
-('Chemistry', 3, 150.0),
-('Biology', 3, 150.0),
-('History', 3, 150.0),
-('Literature', 3, 150.0),
-('Philosophy', 3, 150.0),
-('Art', 3, 150.0),
-('Music', 3, 150.0),
-('Computer Science', 3, 150.0);
+INSERT INTO Subject (name, credits) VALUES 
+('Mathematics', 3),
+('Physics', 3),
+('Chemistry', 3),
+('Biology', 3),
+('History', 3),
+('Literature', 3),
+('Philosophy', 3),
+('Art', 3),
+('Music', 3),
+('Computer Science', 3);
 
 CREATE TABLE Professor (
     id INT(11) NOT NULL AUTO_INCREMENT,
     name VARCHAR(100) NOT NULL,
-    PRIMARY KEY (id)
+    subject_id INT(11) NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (subject_id) REFERENCES Subject(id)
 );
 
-INSERT INTO Professor (name) VALUES 
-('Prof. John Smith'),
-('Prof. Jane Doe'),
-('Prof. Robert Brown'),
-('Prof. Emily White'),
-('Prof. Michael Green');
+INSERT INTO Professor (name, subject_id) VALUES 
+('Prof. John Smith', 1),
+('Prof. John Smith', 2),
+('Prof. Jane Doe', 3),
+('Prof. Jane Doe', 4),
+('Prof. Robert Brown', 5),
+('Prof. Robert Brown', 6),
+('Prof. Emily White', 7),
+('Prof. Emily White', 8),
+('Prof. Michael Green', 9),
+('Prof. Michael Green', 10);
 
 CREATE TABLE Enrollment (
     id INT(11) NOT NULL AUTO_INCREMENT,
