@@ -61,13 +61,15 @@ CREATE TABLE Enrollment (
     student_id INT(11) NOT NULL,
     subject_id INT(11) NOT NULL,
     professor_id INT(11) NOT NULL,
+    program_id INT(11) NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (student_id) REFERENCES Student(id),
     FOREIGN KEY (subject_id) REFERENCES Subject(id),
-    FOREIGN KEY (professor_id) REFERENCES Professor(id)
+    FOREIGN KEY (professor_id) REFERENCES Professor(id),
+    FOREIGN KEY (program_id) REFERENCES Program(id)
 );
 
-INSERT INTO Enrollment (student_id, subject_id, professor_id) VALUES 
-(1, 1, 1),  -- Matemáticas con Prof. John Smith
-(1, 2, 2),  -- Física con Prof. Jane Doe
-(1, 3, 3);  -- Química con Prof. Robert Brown
+INSERT INTO Enrollment (student_id, subject_id, professor_id, program_id) VALUES 
+(1, 1, 1, 1),  -- Matemáticas con Prof. John Smith en el programa "FullStack Developer"
+(1, 2, 2, 1),  -- Física con Prof. Jane Doe en el programa "FullStack Developer"
+(1, 3, 3, 1);  -- Química con Prof. Robert Brown en el programa "FullStack Developer"
