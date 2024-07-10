@@ -1,11 +1,11 @@
-//import StudentService from "../services/student.service.js";
+import ProgramService from "../services/program.service.js";
 
-//const studentService = new StudentService();
+const programService = new ProgramService();
 
 export const getAllPrograms = async (req, res) => {
     try {
-        const students = await studentService.getAllStudents();
-        res.status(201).json(students);
+        const programs = await programService.getAllPrograms();
+        res.status(201).json(programs);
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
@@ -13,10 +13,10 @@ export const getAllPrograms = async (req, res) => {
 
 export const getProgram = async (req, res) => {
     try {
-        const student = await studentService.getStudent(req.params.id);
-        if(student === null)
-            return res.status(404).json({ message: "Student Not Found" });
-        res.status(201).json(student);
+        const program = await programService.getProgram(req.params.id);
+        if(program === null)
+            return res.status(404).json({ message: "Program Not Found" });
+        res.status(201).json(program);
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
@@ -24,8 +24,8 @@ export const getProgram = async (req, res) => {
 
 export const createProgram = async (req, res) => {
     try {
-        const student = await studentService.create(req.body);
-        res.status(201).json(student);
+        const program = await programService.create(req.body);
+        res.status(201).json(program);
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
@@ -33,10 +33,10 @@ export const createProgram = async (req, res) => {
 
 export const updateProgram = async (req, res) => {
     try {
-        const student = await studentService.update(req.params.id, req.body);
-        if(student === null)
-            return res.status(404).json({ message: "Student doesn't exists" });
-        res.status(201).json(student);
+        const program = await programService.update(req.params.id, req.body);
+        if(program === null)
+            return res.status(404).json({ message: "program doesn't exists" });
+        res.status(201).json(program);
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
@@ -44,10 +44,10 @@ export const updateProgram = async (req, res) => {
 
 export const deleteProgram = async (req, res) => {
     try {
-        const response = await studentService.delete(req.params.id);
+        const response = await programService.delete(req.params.id);
         if(response == 0)
-            return res.status(404).json({ message: "Student doesn't exists" });
-        res.status(201).json({message: "Student deleted."});
+            return res.status(404).json({ message: "program doesn't exists" });
+        res.status(201).json({message: "program deleted."});
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
