@@ -1,5 +1,7 @@
 import express from 'express';
 
+import {PORT} from './config.js';
+
 import studentRouter from './routes/student.routes.js';
 import programRouter from './routes/program.routes.js';
 import subjectRouter from './routes/subject.routes.js';
@@ -16,5 +18,5 @@ app.use('/api',subjectRouter);
 app.use('/api',professorRouter);
 app.use('/api',enrollmentRouter);
 
-app.listen(3000);
-console.log('Server running on port 3000');
+app.listen(PORT);
+console.log('Server running on port', PORT);
