@@ -1,9 +1,9 @@
 import EnrollmentModel from "../models/enrollment.model.js";
 import StudentModel from "../models/student.model.js";
 import SubjectModel from "../models/subject.model.js";
-import EnrollmentService from "../services/enrollment.service.js";
+import ProfessorModel from "../models/professor.model.js";
 
-class ProfessorRepository {
+class EnrollmentRepository {
     async getAll() {
         return await EnrollmentModel.findAll();
     }
@@ -42,6 +42,12 @@ class ProfessorRepository {
     }
 
     async create(enrollment) {
+        const { professor_id, subject_id } = enrollment;
+        const professor = await ProfessorModel.findOne({ where: { id: professor_id, subject_id: subject_id } });
+
+        if (!professor) {
+            throw new Error('El profesor no está inscrito para dictar esa materia');
+        }
         return await EnrollmentModel.create(enrollment);
     }
 
@@ -62,4 +68,4 @@ class ProfessorRepository {
     }
 }
 
-export default ProfessorRepository;
+export default EnrollmentRepository;
